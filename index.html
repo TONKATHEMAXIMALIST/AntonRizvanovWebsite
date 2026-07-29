@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anton Fanisovich Rizvanov | Multidisciplinary Creator</title>
+    <style>
+        /* CSS: Global Styles & Dark Theme */
+        :root {
+            --bg-color: #0a0a0a;
+            --text-main: #f4f4f4;
+            --text-muted: #888888;
+            --accent-gold: #D4AF37;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Menu */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Section Layouts */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 10%;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Alternate flex direction for visual variety */
+        section:nth-child(even) .content-container {
+            flex-direction: row-reverse;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        h1, h2 {
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; color: var(--accent-gold); }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* Image Containers & Scroll Animations */
+        .image-container {
+            flex: 1;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+            background: #1a1a1a; /* Placeholder background */
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease;
+            opacity: 0;
+        }
+
+        /* Animation Classes toggled by JS */
+        .image-container.in-view img {
+            opacity: 1;
+        }
+
+        /* Zoom Out Effect (Home) */
+        .zoom-out img { transform: scale(1.3); }
+        .zoom-out.in-view img { transform: scale(1); }
+
+        /* Zoom In Effect (Jewelry, Music Production) */
+        .zoom-in img { transform: scale(1); }
+        .zoom-in.in-view img { transform: scale(1.15); }
+
+        /* Lateral Pan Effect (Repair Tech, Jazz) */
+        .pan-right img { transform: translateX(-5%) scale(1.1); }
+        .pan-right.in-view img { transform: translateX(0) scale(1.1); }
+
+        @media (max-width: 768px) {
+            .content-container, section:nth-child(even) .content-container {
+                flex-direction: column;
+            }
+            nav { flex-wrap: wrap; padding: 10px; }
+            nav a { margin: 5px 10px; font-size: 0.8rem; }
+            .image-container { height: 300px; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#jazz">Jazz Trumpet</a>
+        <a href="#production">Music Production</a>
+        <a href="#classical">Classical</a>
+        <a href="#jewelry">Jewelry</a>
+        <a href="#pcb">PCB Design</a>
+        <a href="#repair">Repair Tech</a>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="content-container">
+            <div class="text-content">
+                <h1>Anton Fanisovich Rizvanov</h1>
+                <p>I am a multidisciplinary creator bridging the worlds of acoustic art and hardware engineering. As a Professional Jazz Trumpet Player, Composer, and Music Producer, I craft complex auditory experiences. As an Electronic Engineer, PCB Designer, and Jewelry Designer, I apply that same meticulous attention to detail to the physical world. My work is defined by a singular philosophy: every discipline is a synthesis of art and precision.</p>
+            </div>
+            <div class="image-container zoom-out">
+                <!-- Replace src with your actual image path -->
+                <img src="placeholder-portrait.jpg" alt="Portrait of Anton Rizvanov">
+            </div>
+        </div>
+    </section>
+
+    <!-- Jazz Trumpet Section -->
+    <section id="jazz">
+        <div class="content-container">
+            <div class="text-content">
+                <h2>Jazz Trumpet</h2>
+                <p>Rooted in improvisation and dynamic expression, my approach to the trumpet balances technical mastery with deep emotional resonance. Whether leading an ensemble or operating as a session player, I bring decades of focused study and live stage experience to every performance.</p>
+            </div>
+            <div class="image-container pan-right">
+                <img src="placeholder-jazz.jpg" alt="Anton playing jazz trumpet live">
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Production Section -->
+    <section id="production">
+        <div class="content-container">
+            <div class="text-content">
+                <h2>Music Production</h2>
+                <p>My workflow blends the organic feel of acoustic tracking with advanced digital sequencing. Utilizing tools like Logic Pro on a MacBook, I seamlessly route and process complex MIDI data, sequence multi-layered tracks, and mix audio with the ear of a trained composer and the technical precision of an engineer.</p>
+            </div>
+            <div class="image-container zoom-in">
+                <img src="placeholder-production.jpg" alt="Music production timeline and DAW">
+            </div>
+        </div>
+    </section>
+
+    <!-- Classical Composition Section -->
+    <section id="classical">
+        <div class="content-container">
+            <div class="text-content">
+                <h2>Classical Composition</h2>
+                <p>Drawing on deep foundational theory, I write and arrange complex chamber and orchestral works. My compositions reflect a rigorous understanding of voice leading, harmony, and orchestration, bringing structured beauty to the page before it ever reaches the stage.</p>
+            </div>
+            <div class="image-container zoom-out">
+                <img src="placeholder-classical.jpg" alt="Sheet music and composition tools">
+            </div>
+        </div>
+    </section>
+
+    <!-- Jewelry Section -->
+    <section id="jewelry">
+        <div class="content-container">
+            <div class="text-content">
+                <h2>Jewelry Design</h2>
+                <p>Transitioning precision from the circuit board to precious metals, I design and construct bespoke jewelry. Specializing in handcrafted custom chains, every link is formed with meticulous attention to structural integrity, weight, and aesthetic brilliance.</p>
+            </div>
+            <div class="image-container zoom-in">
+                <img src="placeholder-jewelry.jpg" alt="Macro shot of custom hand-crafted chain">
+            </div>
+        </div>
+    </section>
+
+    <!-- PCB Design / Electronic Engineer Section -->
+    <section id="pcb">
+        <div class="content-container">
+            <div class="text-content">
+                <h2>PCB Design & Hardware</h2>
+                <p>From initial KiCad and EasyEDA schematic layouts to routing dense circuit boards for manufacturing, I specialize in custom hardware engineering. My passion lies in designing custom electronic musical instruments—including complex multi-layered Tonnetz Grid MIDI controllers featuring overlapping 12x8 FSR matrices and integrated SK6812 LEDs, as well as compact matrixed macro keyboards utilizing ESP32-S2 microcontrollers.</p>
+            </div>
+            <div class="image-container zoom-out">
+                <img src="placeholder-pcb.jpg" alt="Glowing 3D render of a dense Tonnetz Grid PCB layout">
+            </div>
+        </div>
+    </section>
+
+    <!-- Repair Technician Section -->
+    <section id="repair">
+        <div class="content-container">
+            <div class="text-content">
+                <h2>Certified Repair Tech</h2>
+                <p>I am a fully certified repair technician for Apple, Samsung, and Google devices. Utilizing micro-soldering, precision teardowns, and deep diagnostic software, I restore advanced consumer electronics to factory-perfect conditions. Fast turnarounds and uncompromising standards define my workbench.</p>
+            </div>
+            <div class="image-container pan-right">
+                <img src="placeholder-repair.jpg" alt="Knolling layout of disassembled smartphone components">
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Scroll Animations -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.3 // Triggers when 30% of the image is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, observerOptions);
+
+            const images = document.querySelectorAll('.image-container');
+            images.forEach(img => {
+                observer.observe(img);
+            });
+        });
+    </script>
+</body>
+</html>
