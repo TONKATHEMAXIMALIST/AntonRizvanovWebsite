@@ -7,7 +7,7 @@
     <style>
         /* Global Styles & Dark Theme */
         :root {
-            --bg-color: #000000; /* True black for the fade effect */
+            --bg-color: #000000;
             --text-main: #f4f4f4;
             --text-muted: #888888;
             --accent-gold: #D4AF37;
@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* Navigation Menu - Scaled up 50% */
+        /* Navigation Menu */
         nav {
             position: fixed;
             top: 0;
@@ -41,7 +41,7 @@
             color: var(--text-main);
             text-decoration: none;
             margin: 0 20px;
-            font-size: 1.35rem; /* +50% */
+            font-size: 1.35rem;
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: color 0.3s ease;
@@ -49,6 +49,25 @@
 
         nav a:hover {
             color: var(--accent-gold);
+        }
+
+        /* Fixed Logos Stack in Top Right */
+        .logo-stack {
+            position: fixed;
+            top: 100px; /* Positions it just below the nav bar */
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 990;
+            pointer-events: none; /* Prevents logos from blocking clicks on elements beneath them */
+        }
+
+        .logo-stack img {
+            width: 140px; /* Adjust this value if the logos are too big/small */
+            height: auto;
+            opacity: 0.85;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.8));
         }
 
         /* Section Layouts */
@@ -81,18 +100,18 @@
             flex: 1;
         }
 
-        /* Typography - Scaled up 50% */
-        h1, h2 {
+        /* Typography */
+        h1, h2, h3 {
             font-weight: 300;
             letter-spacing: 2px;
             margin-bottom: 25px;
         }
 
-        h1 { font-size: 4.5rem; } /* +50% */
-        h2 { font-size: 3.75rem; color: var(--accent-gold); } /* +50% */
+        h1 { font-size: 4.5rem; }
+        h2 { font-size: 3.75rem; color: var(--accent-gold); }
         
         p {
-            font-size: 1.65rem; /* +50% */
+            font-size: 1.65rem;
             line-height: 1.8;
             color: var(--text-muted);
             margin-bottom: 25px;
@@ -109,13 +128,12 @@
             box-shadow: 0 25px 50px rgba(0,0,0,0.8);
         }
 
-        /* Images controlled by JS for dynamic continuous scaling */
         .image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transform-origin: center center;
-            will-change: transform, opacity; /* Optimizes for JS animation */
+            will-change: transform, opacity;
         }
 
         /* Audio Player Styling */
@@ -149,6 +167,58 @@
             outline: none;
         }
 
+        /* Contact Section Styling */
+        #contact .content-container {
+            flex-direction: column;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--text-main);
+            font-size: 1.35rem;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: rgba(30, 30, 30, 0.9);
+        }
+
+        .contact-form button {
+            padding: 20px;
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .contact-form button:hover {
+            background: var(--accent-gold);
+            color: var(--bg-color);
+        }
+
         /* Mobile Adjustments */
         @media (max-width: 1024px) {
             .content-container, section:nth-child(even) .content-container {
@@ -160,6 +230,7 @@
             h2 { font-size: 2.5rem; }
             p { font-size: 1.25rem; }
             .image-container, .audio-container { height: 400px; width: 100%; }
+            .logo-stack { display: none; /* Hides logos on smaller screens to prevent overlapping content */ }
         }
     </style>
 </head>
@@ -174,17 +245,23 @@
         <a href="#jewelry">Jewelry</a>
         <a href="#pcb">PCB Design</a>
         <a href="#repair">Repair Tech</a>
+        <a href="#contact">Contact</a>
     </nav>
+
+    <!-- Stacked Logos -->
+    <div class="logo-stack">
+        <img src="RizvanovCustomSilver.png" alt="Rizvanov Custom Silver Logo">
+        <img src="RizvanovTechnologyLogo.png" alt="Rizvanov Technology Logo">
+    </div>
 
     <!-- Home Section -->
     <section id="home">
         <div class="content-container">
             <div class="text-content">
                 <h1>Anton Fanisovich Rizvanov</h1>
-                <p>I am a multidisciplinary creator bridging the worlds of acoustic art and hardware engineering. As a Professional Jazz Trumpet Player, Composer, and Music Producer, I craft complex auditory experiences. As an Electronic Engineer, PCB Designer, and Jewelry Designer, I apply that same meticulous attention to detail to the physical world. My work is defined by a singular philosophy: every discipline is a synthesis of art and precision.</p>
+                <p>Anton Fanisovich Rizvanov is a multidisciplinary creator bridging the worlds of acoustic art and hardware engineering. As a Professional Jazz Trumpet Player, Composer, and Music Producer, he crafts complex auditory experiences. As an Electronic Engineer, PCB Designer, and Jewelry Designer, he applies that same meticulous attention to detail to the physical world. His work is defined by a singular philosophy: every discipline is a synthesis of art and precision.</p>
             </div>
             <div class="image-container" style="background: transparent; box-shadow: none;">
-                <!-- ID assigned for specific shrink-to-black scroll logic -->
                 <img id="bg-img" src="Background.jpg" alt="Anton Rizvanov">
             </div>
         </div>
@@ -195,7 +272,7 @@
         <div class="content-container">
             <div class="text-content">
                 <h2>Jazz Trumpet</h2>
-                <p>Rooted in improvisation and dynamic expression, my approach to the trumpet balances technical mastery with deep emotional resonance. Whether leading an ensemble or operating as a session player, I bring decades of focused study and live stage experience to every performance.</p>
+                <p>Rooted in improvisation and dynamic expression, his approach to the trumpet balances technical mastery with deep emotional resonance. Whether leading an ensemble or operating as a session player, Anton brings decades of focused study and live stage experience to every performance.</p>
             </div>
             <div class="image-container">
                 <img class="dynamic-img" src="JazzTrumpet.jpg" alt="Anton playing jazz trumpet">
@@ -203,14 +280,13 @@
         </div>
     </section>
 
-    <!-- Music Production Section (Audio Replaces Image) -->
+    <!-- Music Production Section -->
     <section id="production">
         <div class="content-container">
             <div class="text-content">
                 <h2>Music Production</h2>
-                <p>My workflow blends the organic feel of acoustic tracking with advanced digital sequencing. Utilizing tools like Logic Pro on a MacBook, I seamlessly route and process complex MIDI data, sequence multi-layered tracks, and mix audio with the ear of a trained composer and the technical precision of an engineer.</p>
+                <p>His workflow blends the organic feel of acoustic tracking with advanced digital sequencing. Utilizing tools like Logic Pro on a MacBook, Anton seamlessly routes and processes complex MIDI data, sequences multi-layered tracks, and mixes audio with the ear of a trained composer and the technical precision of an engineer.</p>
             </div>
-            <!-- Audio Container -->
             <div class="audio-container">
                 <h3>World Beneath Your Feet (Solo)</h3>
                 <audio controls src="worldbeneathyourfeetSolo.mp3">
@@ -225,7 +301,7 @@
         <div class="content-container">
             <div class="text-content">
                 <h2>Classical Composition</h2>
-                <p>Drawing on deep foundational theory, I write and arrange complex chamber and orchestral works. My compositions reflect a rigorous understanding of voice leading, harmony, and orchestration, bringing structured beauty to the page before it ever reaches the stage.</p>
+                <p>Drawing on deep foundational theory, Anton writes and arranges complex chamber and orchestral works. His compositions reflect a rigorous understanding of voice leading, harmony, and orchestration, bringing structured beauty to the page before it ever reaches the stage.</p>
             </div>
             <div class="image-container">
                 <img class="dynamic-img" src="ClassicalComposition.png" alt="Classical composition sheet music">
@@ -238,7 +314,7 @@
         <div class="content-container">
             <div class="text-content">
                 <h2>Jewelry Design</h2>
-                <p>Transitioning precision from the circuit board to precious metals, I design and construct bespoke jewelry. Specializing in handcrafted custom chains, every link is formed with meticulous attention to structural integrity, weight, and aesthetic brilliance.</p>
+                <p>Transitioning precision from the circuit board to precious metals, he designs and constructs bespoke jewelry. Specializing in handcrafted custom chains, every link is formed with meticulous attention to structural integrity, weight, and aesthetic brilliance.</p>
             </div>
             <div class="image-container">
                 <img class="dynamic-img" src="Jewelry.JPG" alt="Custom jewelry and chain design">
@@ -251,7 +327,7 @@
         <div class="content-container">
             <div class="text-content">
                 <h2>PCB Design & Hardware</h2>
-                <p>From initial KiCad and EasyEDA schematic layouts to routing dense circuit boards for manufacturing, I specialize in custom hardware engineering. My passion lies in designing custom electronic musical instruments—including complex multi-layered Tonnetz Grid MIDI controllers featuring overlapping 12x8 FSR matrices and integrated SK6812 LEDs, as well as compact matrixed macro keyboards utilizing ESP32-S2 microcontrollers.</p>
+                <p>From initial KiCad and EasyEDA schematic layouts to routing dense circuit boards for manufacturing, he specializes in custom hardware engineering. His passion lies in designing custom electronic musical instruments—including complex multi-layered Tonnetz Grid MIDI controllers featuring overlapping 12x8 FSR matrices and integrated SK6812 LEDs, as well as compact matrixed macro keyboards utilizing ESP32-S2 microcontrollers.</p>
             </div>
             <div class="image-container">
                 <img class="dynamic-img" src="PCB.png" alt="PCB and electronic engineering layouts">
@@ -264,11 +340,27 @@
         <div class="content-container">
             <div class="text-content">
                 <h2>Certified Repair Tech</h2>
-                <p>I am a fully certified repair technician for Apple, Samsung, and Google devices. Utilizing micro-soldering, precision teardowns, and deep diagnostic software, I restore advanced consumer electronics to factory-perfect conditions. Fast turnarounds and uncompromising standards define my workbench.</p>
+                <p>Anton is a fully certified repair technician for Apple, Samsung, and Google devices. Utilizing micro-soldering, precision teardowns, and deep diagnostic software, he restores advanced consumer electronics to factory-perfect conditions. Fast turnarounds and uncompromising standards define his workbench.</p>
             </div>
             <div class="image-container">
-                <img class="dynamic-img" src="RepairTech.jpg" alt="Repair technician workspace">
+                <img class="dynamic-img" src="RepairTech.png" alt="Repair technician workspace">
             </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="content-container">
+            <h2>Contact</h2>
+            <p>For booking inquiries, jewelry commissions, custom hardware requests, or device repair, please reach out directly.</p>
+            
+            <!-- Note: You will need to link this form to a backend service like Formspree to actually send emails from a static GitHub Pages site -->
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" rows="6" placeholder="Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </div>
     </section>
 
@@ -277,7 +369,6 @@
         document.addEventListener("DOMContentLoaded", () => {
             let ticking = false;
 
-            // Listens for scroll events and fires logic on the next animation frame to prevent lag
             window.addEventListener('scroll', () => {
                 if (!ticking) {
                     window.requestAnimationFrame(() => {
@@ -292,52 +383,38 @@
                 const scrollY = window.scrollY;
                 const vh = window.innerHeight;
 
-                // 1. Logic for the Background Image (Shrinks and fades to black as you scroll down)
+                // Background Image Logic
                 const bgImg = document.getElementById('bg-img');
                 if (bgImg) {
                     const homeSection = document.getElementById('home');
                     const homeRect = homeSection.getBoundingClientRect();
                     
-                    // Calculates how far the home section has scrolled up past the viewport
                     let homeProgress = Math.max(0, -homeRect.top / (vh * 0.8)); 
-                    
-                    // Starts at scale 1.3 (zoomed in) and shrinks down to 0.5
                     let bgScale = Math.max(0.5, 1.3 - (homeProgress * 0.8));
-                    
-                    // Starts at opacity 1 and fades to 0 (revealing the black background behind it)
                     let bgOpacity = Math.max(0, 1 - (homeProgress * 1.5));
                     
                     bgImg.style.transform = `scale(${bgScale})`;
                     bgImg.style.opacity = bgOpacity;
                 }
 
-                // 2. Logic for all other images (Start zoomed out -> zoom in at center -> zoom out)
+                // Dynamic Gallery Images Logic
                 const dynamicImages = document.querySelectorAll('.dynamic-img');
                 dynamicImages.forEach(img => {
                     const rect = img.parentElement.getBoundingClientRect();
                     const elementCenter = rect.top + (rect.height / 2);
                     const viewCenter = vh / 2;
                     
-                    // Absolute distance from the center of the viewport
                     const distFromCenter = Math.abs(viewCenter - elementCenter);
-                    
-                    // The maximum distance where the effect takes place (roughly the height of the screen)
                     const maxDist = vh;
                     
-                    // Progress is 1 when dead center, 0 when off screen
                     let progress = 1 - Math.min(distFromCenter / maxDist, 1);
-                    
-                    // Smoothstep easing function makes the zoom feel fluid rather than linear
                     const smoothProgress = progress * progress * (3 - 2 * progress);
-                    
-                    // Scale goes from 1.0 (zoomed out at edges) to 1.25 (fully zoomed in at center)
                     let scale = 1.0 + (smoothProgress * 0.25);
                     
                     img.style.transform = `scale(${scale})`;
                 });
             }
             
-            // Run once on load to establish starting positions
             updateDynamicImages();
         });
     </script>
