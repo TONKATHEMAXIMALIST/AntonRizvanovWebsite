@@ -51,23 +51,24 @@
             color: var(--accent-gold);
         }
 
-        /* Fixed Logos Stack in Top Left */
-        .logo-stack {
+        /* Fixed Logos in Top Corners */
+        .logo-left, .logo-right {
             position: fixed;
             top: 100px; /* Positions it just below the nav bar */
-            left: 40px; /* Moved from right to left */
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            width: 560px; /* Enlarged size */
+            height: auto;
+            opacity: 0.4; /* Increased translucency (was 0.85) */
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.8));
             z-index: 990;
             pointer-events: none; /* Prevents logos from blocking clicks on elements beneath them */
         }
 
-        .logo-stack img {
-            width: 560px; /* Enlarged by 400% from 140px */
-            height: auto;
-            opacity: 0.85;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.8));
+        .logo-left {
+            left: 40px;
+        }
+
+        .logo-right {
+            right: 40px;
         }
 
         /* Section Layouts */
@@ -230,7 +231,7 @@
             h2 { font-size: 2.5rem; }
             p { font-size: 1.25rem; }
             .image-container, .audio-container { height: 400px; width: 100%; }
-            .logo-stack { display: none; /* Hides logos on smaller screens to prevent overlapping content */ }
+            .logo-left, .logo-right { display: none; /* Hides logos on smaller screens */ }
         }
     </style>
 </head>
@@ -248,11 +249,9 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Stacked Logos -->
-    <div class="logo-stack">
-        <img src="RizvanovCustomSilver.png" alt="Rizvanov Custom Silver Logo">
-        <img src="RizvanovTechnologyLogo.png" alt="Rizvanov Technology Logo">
-    </div>
+    <!-- Translucent Logos in Top Corners -->
+    <img class="logo-left" src="RizvanovCustomSilver.png" alt="Rizvanov Custom Silver Logo">
+    <img class="logo-right" src="RizvanovTechnologyLogo.png" alt="Rizvanov Technology Logo">
 
     <!-- Home Section -->
     <section id="home">
@@ -343,7 +342,7 @@
                 <p>Anton is a fully certified repair technician for Apple, Samsung, and Google devices. Utilizing micro-soldering, precision teardowns, and deep diagnostic software, he restores advanced consumer electronics to factory-perfect conditions. Fast turnarounds and uncompromising standards define his workbench.</p>
             </div>
             <div class="image-container">
-                <img class="dynamic-img" src="RepairTech.png" alt="Repair technician workspace">
+                <img class="dynamic-img" src="RepairTech.jpg" alt="Repair technician workspace">
             </div>
         </div>
     </section>
