@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anton Fanisovich Rizvanov | Multidisciplinary Creator</title>
     <style>
-        /* CSS: Global Styles & Dark Theme */
+        /* Global Styles & Dark Theme */
         :root {
-            --bg-color: #0a0a0a;
+            --bg-color: #000000; /* True black for the fade effect */
             --text-main: #f4f4f4;
             --text-muted: #888888;
             --accent-gold: #D4AF37;
@@ -23,16 +23,16 @@
             overflow-x: hidden;
         }
 
-        /* Navigation Menu */
+        /* Navigation Menu - Scaled up 50% */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: center;
-            padding: 20px 0;
+            padding: 25px 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -40,8 +40,8 @@
         nav a {
             color: var(--text-main);
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 0.9rem;
+            margin: 0 20px;
+            font-size: 1.35rem; /* +50% */
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: color 0.3s ease;
@@ -57,7 +57,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 100px 10%;
+            padding: 120px 10%;
             box-sizing: border-box;
             position: relative;
         }
@@ -66,12 +66,13 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 50px;
-            max-width: 1200px;
+            gap: 60px;
+            max-width: 1600px;
             width: 100%;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Alternate flex direction for visual variety */
         section:nth-child(even) .content-container {
             flex-direction: row-reverse;
         }
@@ -80,65 +81,85 @@
             flex: 1;
         }
 
+        /* Typography - Scaled up 50% */
         h1, h2 {
             font-weight: 300;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        h1 { font-size: 3rem; }
-        h2 { font-size: 2.5rem; color: var(--accent-gold); }
+        h1 { font-size: 4.5rem; } /* +50% */
+        h2 { font-size: 3.75rem; color: var(--accent-gold); } /* +50% */
         
         p {
-            font-size: 1.1rem;
+            font-size: 1.65rem; /* +50% */
             line-height: 1.8;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        /* Image Containers & Scroll Animations */
+        /* Image & Media Containers */
         .image-container {
             flex: 1;
-            height: 500px;
+            height: 600px;
             overflow: hidden;
             position: relative;
-            background: #1a1a1a; /* Placeholder background */
+            background: #000; 
             border-radius: 4px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
         }
 
+        /* Images controlled by JS for dynamic continuous scaling */
         .image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease;
-            opacity: 0;
+            transform-origin: center center;
+            will-change: transform, opacity; /* Optimizes for JS animation */
         }
 
-        /* Animation Classes toggled by JS */
-        .image-container.in-view img {
-            opacity: 1;
+        /* Audio Player Styling */
+        .audio-container {
+            flex: 1;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #111, #0a0a0a);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            padding: 40px;
+            box-sizing: border-box;
         }
 
-        /* Zoom Out Effect (Home) */
-        .zoom-out img { transform: scale(1.3); }
-        .zoom-out.in-view img { transform: scale(1); }
+        .audio-container h3 {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-align: center;
+        }
 
-        /* Zoom In Effect (Jewelry, Music Production) */
-        .zoom-in img { transform: scale(1); }
-        .zoom-in.in-view img { transform: scale(1.15); }
+        audio {
+            width: 100%;
+            max-width: 500px;
+            outline: none;
+        }
 
-        /* Lateral Pan Effect (Repair Tech, Jazz) */
-        .pan-right img { transform: translateX(-5%) scale(1.1); }
-        .pan-right.in-view img { transform: translateX(0) scale(1.1); }
-
-        @media (max-width: 768px) {
+        /* Mobile Adjustments */
+        @media (max-width: 1024px) {
             .content-container, section:nth-child(even) .content-container {
                 flex-direction: column;
             }
-            nav { flex-wrap: wrap; padding: 10px; }
-            nav a { margin: 5px 10px; font-size: 0.8rem; }
-            .image-container { height: 300px; width: 100%; }
+            nav { flex-wrap: wrap; padding: 15px; }
+            nav a { margin: 10px; font-size: 1.1rem; }
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
+            p { font-size: 1.25rem; }
+            .image-container, .audio-container { height: 400px; width: 100%; }
         }
     </style>
 </head>
@@ -162,9 +183,9 @@
                 <h1>Anton Fanisovich Rizvanov</h1>
                 <p>I am a multidisciplinary creator bridging the worlds of acoustic art and hardware engineering. As a Professional Jazz Trumpet Player, Composer, and Music Producer, I craft complex auditory experiences. As an Electronic Engineer, PCB Designer, and Jewelry Designer, I apply that same meticulous attention to detail to the physical world. My work is defined by a singular philosophy: every discipline is a synthesis of art and precision.</p>
             </div>
-            <div class="image-container zoom-out">
-                <!-- Replace src with your actual image path -->
-                <img src="placeholder-portrait.jpg" alt="Portrait of Anton Rizvanov">
+            <div class="image-container" style="background: transparent; box-shadow: none;">
+                <!-- ID assigned for specific shrink-to-black scroll logic -->
+                <img id="bg-img" src="Background.jpg" alt="Anton Rizvanov">
             </div>
         </div>
     </section>
@@ -176,21 +197,25 @@
                 <h2>Jazz Trumpet</h2>
                 <p>Rooted in improvisation and dynamic expression, my approach to the trumpet balances technical mastery with deep emotional resonance. Whether leading an ensemble or operating as a session player, I bring decades of focused study and live stage experience to every performance.</p>
             </div>
-            <div class="image-container pan-right">
-                <img src="placeholder-jazz.jpg" alt="Anton playing jazz trumpet live">
+            <div class="image-container">
+                <img class="dynamic-img" src="JazzTrumpet.jpg" alt="Anton playing jazz trumpet">
             </div>
         </div>
     </section>
 
-    <!-- Music Production Section -->
+    <!-- Music Production Section (Audio Replaces Image) -->
     <section id="production">
         <div class="content-container">
             <div class="text-content">
                 <h2>Music Production</h2>
                 <p>My workflow blends the organic feel of acoustic tracking with advanced digital sequencing. Utilizing tools like Logic Pro on a MacBook, I seamlessly route and process complex MIDI data, sequence multi-layered tracks, and mix audio with the ear of a trained composer and the technical precision of an engineer.</p>
             </div>
-            <div class="image-container zoom-in">
-                <img src="placeholder-production.jpg" alt="Music production timeline and DAW">
+            <!-- Audio Container -->
+            <div class="audio-container">
+                <h3>World Beneath Your Feet (Solo)</h3>
+                <audio controls src="worldbeneathyourfeetSolo.mp3">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
         </div>
     </section>
@@ -202,8 +227,8 @@
                 <h2>Classical Composition</h2>
                 <p>Drawing on deep foundational theory, I write and arrange complex chamber and orchestral works. My compositions reflect a rigorous understanding of voice leading, harmony, and orchestration, bringing structured beauty to the page before it ever reaches the stage.</p>
             </div>
-            <div class="image-container zoom-out">
-                <img src="placeholder-classical.jpg" alt="Sheet music and composition tools">
+            <div class="image-container">
+                <img class="dynamic-img" src="ClassicalComposition.png" alt="Classical composition sheet music">
             </div>
         </div>
     </section>
@@ -215,8 +240,8 @@
                 <h2>Jewelry Design</h2>
                 <p>Transitioning precision from the circuit board to precious metals, I design and construct bespoke jewelry. Specializing in handcrafted custom chains, every link is formed with meticulous attention to structural integrity, weight, and aesthetic brilliance.</p>
             </div>
-            <div class="image-container zoom-in">
-                <img src="placeholder-jewelry.jpg" alt="Macro shot of custom hand-crafted chain">
+            <div class="image-container">
+                <img class="dynamic-img" src="Jewelry.JPG" alt="Custom jewelry and chain design">
             </div>
         </div>
     </section>
@@ -228,8 +253,8 @@
                 <h2>PCB Design & Hardware</h2>
                 <p>From initial KiCad and EasyEDA schematic layouts to routing dense circuit boards for manufacturing, I specialize in custom hardware engineering. My passion lies in designing custom electronic musical instruments—including complex multi-layered Tonnetz Grid MIDI controllers featuring overlapping 12x8 FSR matrices and integrated SK6812 LEDs, as well as compact matrixed macro keyboards utilizing ESP32-S2 microcontrollers.</p>
             </div>
-            <div class="image-container zoom-out">
-                <img src="placeholder-pcb.jpg" alt="Glowing 3D render of a dense Tonnetz Grid PCB layout">
+            <div class="image-container">
+                <img class="dynamic-img" src="PCB.png" alt="PCB and electronic engineering layouts">
             </div>
         </div>
     </section>
@@ -241,33 +266,79 @@
                 <h2>Certified Repair Tech</h2>
                 <p>I am a fully certified repair technician for Apple, Samsung, and Google devices. Utilizing micro-soldering, precision teardowns, and deep diagnostic software, I restore advanced consumer electronics to factory-perfect conditions. Fast turnarounds and uncompromising standards define my workbench.</p>
             </div>
-            <div class="image-container pan-right">
-                <img src="placeholder-repair.jpg" alt="Knolling layout of disassembled smartphone components">
+            <div class="image-container">
+                <img class="dynamic-img" src="RepairTech.png" alt="Repair technician workspace">
             </div>
         </div>
     </section>
 
-    <!-- JavaScript for Scroll Animations -->
+    <!-- JavaScript for High-Performance Scroll-Linked Animations -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: "0px",
-                threshold: 0.3 // Triggers when 30% of the image is visible
-            };
+            let ticking = false;
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                    }
-                });
-            }, observerOptions);
-
-            const images = document.querySelectorAll('.image-container');
-            images.forEach(img => {
-                observer.observe(img);
+            // Listens for scroll events and fires logic on the next animation frame to prevent lag
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateDynamicImages();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
             });
+
+            function updateDynamicImages() {
+                const scrollY = window.scrollY;
+                const vh = window.innerHeight;
+
+                // 1. Logic for the Background Image (Shrinks and fades to black as you scroll down)
+                const bgImg = document.getElementById('bg-img');
+                if (bgImg) {
+                    const homeSection = document.getElementById('home');
+                    const homeRect = homeSection.getBoundingClientRect();
+                    
+                    // Calculates how far the home section has scrolled up past the viewport
+                    let homeProgress = Math.max(0, -homeRect.top / (vh * 0.8)); 
+                    
+                    // Starts at scale 1.3 (zoomed in) and shrinks down to 0.5
+                    let bgScale = Math.max(0.5, 1.3 - (homeProgress * 0.8));
+                    
+                    // Starts at opacity 1 and fades to 0 (revealing the black background behind it)
+                    let bgOpacity = Math.max(0, 1 - (homeProgress * 1.5));
+                    
+                    bgImg.style.transform = `scale(${bgScale})`;
+                    bgImg.style.opacity = bgOpacity;
+                }
+
+                // 2. Logic for all other images (Start zoomed out -> zoom in at center -> zoom out)
+                const dynamicImages = document.querySelectorAll('.dynamic-img');
+                dynamicImages.forEach(img => {
+                    const rect = img.parentElement.getBoundingClientRect();
+                    const elementCenter = rect.top + (rect.height / 2);
+                    const viewCenter = vh / 2;
+                    
+                    // Absolute distance from the center of the viewport
+                    const distFromCenter = Math.abs(viewCenter - elementCenter);
+                    
+                    // The maximum distance where the effect takes place (roughly the height of the screen)
+                    const maxDist = vh;
+                    
+                    // Progress is 1 when dead center, 0 when off screen
+                    let progress = 1 - Math.min(distFromCenter / maxDist, 1);
+                    
+                    // Smoothstep easing function makes the zoom feel fluid rather than linear
+                    const smoothProgress = progress * progress * (3 - 2 * progress);
+                    
+                    // Scale goes from 1.0 (zoomed out at edges) to 1.25 (fully zoomed in at center)
+                    let scale = 1.0 + (smoothProgress * 0.25);
+                    
+                    img.style.transform = `scale(${scale})`;
+                });
+            }
+            
+            // Run once on load to establish starting positions
+            updateDynamicImages();
         });
     </script>
 </body>
